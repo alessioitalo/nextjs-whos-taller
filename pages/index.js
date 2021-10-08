@@ -1,8 +1,40 @@
 import Head from 'next/head';
 import Main from '../components/Main';
+import Game from '../components/Game';
 import { StyledMain } from '../components/styled';
+import { useState, useEffect, useContext } from 'react';
+import { MongoClient } from 'mongodb';
+import TallerContext from '../context/taller-context';
 
-export default function Home() {
+export async function getStaticProps() {
+  const client = await MongoClient.connect(
+    `mongodb+srv://alessioitalo-taller:bkUTta0Ut6GrKBbc@cluster0.jncm5.mongodb.net/whos-taller?retryWrites=true&w=majority`
+  );
+  const db = client.db();
+  const charactersCollection = db.collection('characters');
+  const characters = await charactersCollection.find().toArray();
+  client.close();
+  return {
+    props: {
+      characters: characters.map((char) => ({
+        id: char._id.toString(),
+        name: char.name,
+        bio: char.bio,
+        photo: char.photo,
+        credit: char.credit,
+        height: char.height,
+      })),
+    },
+  };
+}
+
+
+export default function Home({characters}) {
+  const ctx = useContext(TallerContext)
+  useEffect(() => {
+    ctx.setCharactersArray(characters);
+  }, []);
+
   return (
     // <div className={styles.container}>
     <>
@@ -12,9 +44,9 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <StyledMain>
-      <Main />
+        {ctx.gameOn ? <Game /> : <Main />}
       </StyledMain>
-      </>
+    </>
     // </div>
   );
 }

@@ -32,8 +32,6 @@ export const StyledHalf = styled.div`
   width: 50%;
   min-height:  40rem;
   border: 2px solid black;
-  ${'' /* border-radius: 20px; */}
-  ${'' /* margin: 1rem; */}
   background-image: ${(props) => `url(${props.photo})`};
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,6 +45,7 @@ export const StyledScore = styled.div`
   color: black;
   font-size: 2rem;
   height: 4rem;
+  position: absolute;
 `;
 
 export const StyledFooter = styled.footer`

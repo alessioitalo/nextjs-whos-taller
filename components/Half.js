@@ -5,6 +5,7 @@ const Half = ({character}) => {
         <StyledHalf photo={character.photo}>
             {character.name}
             {character.bio}
+            {character.credit}
         </StyledHalf>
     );
 }
