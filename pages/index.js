@@ -28,12 +28,16 @@ export async function getStaticProps() {
   };
 }
 
+export default function Home({ characters }) {
+  const ctx = useContext(TallerContext);
+  const [tallerOne, setTallerOne] = useState(null);
 
-export default function Home({characters}) {
-  const ctx = useContext(TallerContext)
   useEffect(() => {
     ctx.setCharactersArray(characters);
   }, []);
+
+
+  let randomIndexOne = Math.floor(Math.random() * ctx.charactersArray.length);
 
   return (
     // <div className={styles.container}>
@@ -44,7 +48,11 @@ export default function Home({characters}) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <StyledMain>
-        {ctx.gameOn ? <Game /> : <Main />}
+        {ctx.gameOn ? (
+          <Game tallerOne={ctx.charactersArray[randomIndexOne]} setTallerOne={setTallerOne}/>
+        ) : (
+          <Main />
+        )}
       </StyledMain>
     </>
     // </div>
