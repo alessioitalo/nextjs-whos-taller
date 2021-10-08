@@ -1,14 +1,14 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { StyledMain } from "./styled";
+// import { StyledMain } from "./styled";
 
 const Layout = ({children}) => {
     return (
         <>
         <Navbar />
-        <StyledMain>
+        {/* <StyledMain> */}
         {children}
-        </StyledMain>
+        {/* </StyledMain> */}
         <Footer />
         </>
     );
