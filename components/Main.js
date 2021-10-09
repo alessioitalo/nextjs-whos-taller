@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import TallerContext from '../context/taller-context';
-import { StyledMain } from './styled';
+import { StyledMain, StyledButton } from './styled';
 
 const Main = () => {
   const ctx = useContext(TallerContext);
@@ -12,7 +12,7 @@ const Main = () => {
         the guessing game for celebrities, fictional and historical characters'
         heights
       </h5>
-      <button onClick={() => ctx.setGameOn(true)}>Play now!</button>
+      <StyledButton onClick={() => ctx.setGameOn(true)}>Play now!</StyledButton>
     </StyledMain>
   );
 };

@@ -1,13 +1,15 @@
-import { StyledHalf } from './styled';
+import { StyledHalf, StyledButton, StyledOverlay } from './styled';
 
 const Half = ({ character, onClick }) => {
   return (
     <StyledHalf photo={character.photo}>
-      {character.name}
-      {character.bio}
-      {character.credit}
-      <h1 style={{color: 'white', fontSize: '3rem'}}>{character.height}</h1>
-      <button  onClick={onClick}>THis!</button>
+      <div className="name">{character.name}</div>
+      <div className="bio">{character.bio}</div>
+      <span className='credit'>Photo: {character.credit}</span>
+      <StyledOverlay>
+      <StyledButton onClick={onClick}>Choose</StyledButton>
+      </StyledOverlay>
+
     </StyledHalf>
   );
 };
