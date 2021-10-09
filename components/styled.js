@@ -1,32 +1,40 @@
 import styled from 'styled-components';
+import { css } from 'styled-components';
 
-export const StyledNavbar = styled.nav`
-  display: flex;
-  height: 10%;
+const flexCenter = css`
   display: flex;
   justify-content: center;
+  align-items: center;
+`;
+
+const differentText = css`
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+`;
+
+export const StyledNavbar = styled.nav`
+  height: 10%;
+  ${flexCenter}
 `;
 
 export const StyledMain = styled.main`
   min-height: 80vh;
   height: 100%;
   background: pink;
-  ${'' /* margin: 0; */}
-  display: flex;
+  ${flexCenter}
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 export const StyledGameContainer = styled.div`
   min-height: 80vh;
   height: 100%;
   width: 100%;
   background: lightblue;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  ${flexCenter}
   position: relative;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 export const StyledHalf = styled.div`
@@ -38,20 +46,15 @@ export const StyledHalf = styled.div`
   background-position-y: 10%;
   text-shadow: -1px -1px 0 hsl(205, 46%, 37%), 1px -1px 0 hsl(205, 46%, 37%),
     -1px 1px 0 hsl(205, 46%, 37%), 1px 1px 0 hsl(205, 46%, 37%);
-
   border-top: 2px solid white;
   border-bottom: 2px solid white;
   border-left: 1px solid white;
-  border-right: 1px solid white;  
-
-
-  display: flex;
+  border-right: 1px solid white;
+  ${flexCenter}
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  justify-content: flex-start;
   position: relative;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  ${differentText}
 
   .name {
     font-size: 3rem;
@@ -63,53 +66,53 @@ export const StyledHalf = styled.div`
 
   .credit {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  @media (max-width: 550px) {
+    width: 100%;
+    min-height: 50vh;
+    .name {
+      font-size: 1.6rem;
+    }
+
+    .bio, .credit {
+      font-size: 0.8rem;
+    }
+
   }
 `;
 
 export const StyledScore = styled.div`
-  background: white;
   border-radius: 50%;
   height: 4rem;
   width: 4rem;
-  ${'' /* border: 2px solid white; */}
   padding: 3rem;
-  text-align: center;
-  color: black;
   font-size: 1rem;
   height: 4rem;
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   border: 2px solid white;
-
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  color: white;
   background-color: hsl(205, 46%, 37%);
+  ${flexCenter}
+  ${differentText}
 `;
 
 export const StyledFooter = styled.footer`
   background: aliceblue;
-  display: flex;
+  ${flexCenter}
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: hsl(205, 46%, 37%);
-  ${'' /* height: %; */}
 `;
 
 export const StyledButton = styled.button`
   border-radius: 10px;
   border: none;
-  padding: 0.5rem 2rem;
+  padding: 1rem 4rem;
   cursor: pointer;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
   color: hsl(205, 46%, 37%);
+  font-size: 1.5rem;
+  ${differentText}
 
   &:hover {
     background-color: hsl(205, 46%, 37%);
@@ -123,15 +126,17 @@ export const StyledOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  ${'' /* background: hsla(205, 46%, 37%, 0); */}
-  background: hsla(205, 46%, 37%, 0.7);
+  background: hsla(205, 46%, 37%, 0.5);
   opacity: 0;
-  display: flex;
+  ${flexCenter}
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   &:hover {
     opacity: 1;
+  }
+
+  @media (max-width: 550px){
+    opacity: 1;
+    background: transparent;
   }
 `;

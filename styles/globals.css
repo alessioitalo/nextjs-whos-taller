@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Quicksand:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans Condensed', sans-serif;
-  background-color: hsl(205,46%,37%);
+  background-color: hsl(205, 46%, 37%);
   color: white;
+  text-align: center;
 }
 
 a {
@@ -14,17 +20,19 @@ a {
   text-decoration: none;
 }
 
-ul{
+ul {
   padding: 0;
   width: 40%;
   display: flex;
   justify-content: space-around;
 }
 
-li{
+li {
   list-style: none;
 }
 
-* {
-  box-sizing: border-box;
+@media(max-width: 550px){
+  ul{
+    width: 90%;
+  }
 }
