@@ -36,8 +36,9 @@ export default function Home({ characters }) {
     ctx.setCharactersArray(characters);
   }, []);
 
-
   let randomIndexOne = Math.floor(Math.random() * ctx.charactersArray.length);
+
+
 
   return (
     // <div className={styles.container}>
@@ -49,7 +50,7 @@ export default function Home({ characters }) {
       </Head>
       <StyledMain>
         {ctx.gameOn ? (
-          <Game tallerOne={ctx.charactersArray[randomIndexOne]} setTallerOne={setTallerOne}/>
+          <Game tallerOne={tallerOne || ctx.charactersArray[randomIndexOne]} setTallerOne={setTallerOne}/>
         ) : (
           <Main />
         )}
