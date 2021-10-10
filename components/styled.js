@@ -15,24 +15,32 @@ const differentText = css`
 export const StyledNavbar = styled.nav`
   height: 10%;
   ${flexCenter}
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const StyledMain = styled.main`
   height: 100vh;
   width: 100%;
   ${flexCenter}
-  flex-direction: column;
   background-repeat: no-repeat;
   background-image: url('/bg.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
 
-  h1{
+  .content{
+    width: 80%;
+    padding-top: 10vh;
+
+  }
+
+  h1 {
     ${differentText};
     font-size: 4rem;
   }
-
 `;
 export const StyledGameContainer = styled.div`
   height: 100%;
@@ -40,27 +48,24 @@ export const StyledGameContainer = styled.div`
   ${flexCenter}
   position: relative;
 
-  @media (max-width: 550px) {
+  @media (max-width: 750px) {
     flex-direction: column;
   }
 `;
 
 export const StyledHalf = styled.div`
   width: 50%;
-  min-height: 40rem;
+  min-height: 90vh;
   background-image: ${(props) => `url(${props.photo})`};
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: 10%;
+  background-position-y: 20%;
+  background-position-x: center;
   text-shadow: -1px -1px 0 hsl(205, 46%, 37%), 1px -1px 0 hsl(205, 46%, 37%),
     -1px 1px 0 hsl(205, 46%, 37%), 1px 1px 0 hsl(205, 46%, 37%);
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
   ${flexCenter}
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   position: relative;
   ${differentText}
 
@@ -78,9 +83,13 @@ export const StyledHalf = styled.div`
     right: 1rem;
   }
 
-  @media (max-width: 550px) {
+  @media (max-width: 750px) {
     width: 100%;
     min-height: 50vh;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 0.5rem;
     .name {
       font-size: 1.6rem;
     }
@@ -104,13 +113,21 @@ export const StyledScore = styled.div`
   background-color: hsl(205, 46%, 37%);
   ${flexCenter}
   ${differentText}
+  @media (max-width: 750px) {
+    left: 1rem;
+  }
 `;
 
 export const StyledFooter = styled.footer`
-  background: aliceblue;
-  ${flexCenter}
-  flex-direction: column;
   background-color: hsl(205, 46%, 37%);
+  padding: 2rem;
+  a {
+    text-decoration: none;
+  }
+
+  .credit {
+    font-size: 0.8rem;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -120,13 +137,18 @@ export const StyledButton = styled.button`
   cursor: pointer;
   color: hsl(205, 46%, 37%);
   font-size: 1.5rem;
+  outline: 2px solid hsl(205, 46%, 37%);
   ${differentText};
-  z-index: 1;
+  z-index: ${(props) => (props.isForCard ? 1 : null)};
+  margin-bottom: ${(props) => (props.isForCard ? '3rem' : '0')};
 
   &:hover {
     background-color: hsl(205, 46%, 37%);
     color: white;
     outline: 2px solid white;
+  }
+  @media (max-width: 750px) {
+    padding: 0.5rem 1rem;
   }
 `;
 
@@ -137,33 +159,47 @@ export const StyledOverlay = styled.div`
   top: 0;
   left: 0;
   background: hsla(205, 46%, 37%, 0.5);
-  background: ${(props)=> props.isForCard ? 'hsla(205, 46%, 37%, 0.5)' : 'hsla(0,0%,0%, 0.5)'};
-  opacity: ${(props) => props.isForCard ? 0 : 1};
+  background: ${(props) =>
+    props.isForCard ? 'hsla(205, 46%, 37%, 0.5)' : 'hsla(0,0%,0%, 0.5)'};
+  opacity: ${(props) => (props.isForCard ? 0 : 1)};
   ${flexCenter}
+  justify-content: flex-start;
   flex-direction: column;
 
   &:hover {
     opacity: 1;
   }
 
-  @media (max-width: 550px) {
+  @media (max-width: 750px) {
     opacity: 1;
-    background: ${(props) => props.isForCard ? 'transparent' : 'hsla(0,0%,0%, 0.5)'}
+    background: ${(props) =>
+      props.isForCard ? 'transparent' : 'hsla(0,0%,0%, 0.5)'};
   }
 `;
 
 export const StyledContactForm = styled.form`
-${flexCenter};
-flex-direction: column;
-`
+  ${flexCenter};
+  flex-direction: column;
+`;
+
 export const StyledGameOver = styled.div`
-width: 60%;
-height: 50%;
-position: absolute;
-margin: auto;
-border-radius: 20px;
-${flexCenter};
-flex-direction: column;
-background: hsl(205, 46%, 37%);
-color: white;
-`
+  width: 60%;
+  height: 70%;
+  position: absolute;
+  border: 2px solid white;
+  top: 15%;
+  left: 20%;
+  margin: auto;
+  border-radius: 20px;
+  ${flexCenter};
+  flex-direction: column;
+  background: hsl(205, 46%, 37%);
+  color: white;
+  @media (max-width: 750px) {
+    width: 90%;
+    height: 80%;
+    top: 10%;
+    left: 5%;
+    margin: auto;
+  }
+`;

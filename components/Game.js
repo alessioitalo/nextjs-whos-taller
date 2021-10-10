@@ -15,7 +15,10 @@ const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
   const chooseSecondCharacter = () => {
     let randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
     if (tallerTwo) {
-      while (tallerTwo.height === ctx.charactersArray[randomIndexTwo].height || tallerOne.height === ctx.charactersArray[randomIndexTwo].height) {
+      while (
+        tallerTwo.height === ctx.charactersArray[randomIndexTwo].height ||
+        tallerOne.height === ctx.charactersArray[randomIndexTwo].height
+      ) {
         randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
       }
     }
@@ -35,7 +38,7 @@ const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
   };
 
   const checkHeightHandler = (chosen, other) => {
-    if (chosen.height > other.height) {
+    if (chosen.height >= other.height) {
       rightAnswerHandler();
       return;
     }
@@ -45,6 +48,7 @@ const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
   return (
     <StyledGameContainer>
       <Half
+        first={true}
         character={tallerOne}
         onClick={() => checkHeightHandler(tallerOne, tallerTwo)}
       />

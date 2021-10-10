@@ -1,14 +1,40 @@
-import { StyledMain, StyledOverlay } from "../components/styled";
+import { StyledMain, StyledOverlay } from '../components/styled';
 
 const About = () => {
-    return (
-        <StyledMain>
-        <StyledOverlay>
-        <h1>About page</h1>
-        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-        </StyledOverlay>
-        </StyledMain>
-     );
-}
- 
+  return (
+    <StyledMain>
+      <StyledOverlay>
+        <div className='content'>
+          <h1>About</h1>
+          <div>
+            <p>
+              Who's taller? was created by{' '}
+              <a href='https://www.alessioitalo.uk/' target="_blank" rel="noreferrer"> a tall guy</a> who has
+              always wondered which famous people were taller than him. It is
+              built with <a href='https://nextjs.org/'>NextJS</a>, a React
+              framework.
+            </p>
+
+            <p>
+              All the pictures being used are taken from{' '}
+              <a href='https://commons.wikimedia.org/wiki/Main_Page' target="_blank" rel="noreferrer">
+                {' '}
+                Wikimedia Commons
+              </a>{' '}
+              and they are not subject to any copyright restrictions. Authors
+              are always credited.
+            </p>
+
+            <p>
+              Who's taller? was inspired by the{' '}
+              <a href='http://www.higherlowergame.com/' target="_blank" rel="noreferrer"> Higher Lower Game</a>,
+              one of the most addictive games you'll ever play.{' '}
+            </p>
+          </div>
+        </div>
+      </StyledOverlay>
+    </StyledMain>
+  );
+};
+
 export default About;
