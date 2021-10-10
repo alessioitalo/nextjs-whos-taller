@@ -4,10 +4,10 @@ import { StyledGameContainer } from './styled';
 import TallerContext from '../context/taller-context';
 import { useContext, useState, useEffect } from 'react';
 
-const Game = ({ tallerOne, setTallerOne }) => {
+const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
   const ctx = useContext(TallerContext);
   const [tallerTwo, setTallerTwo] = useState(null);
-  
+
   useEffect(() => {
     chooseSecondCharacter();
   }, []);
@@ -15,9 +15,7 @@ const Game = ({ tallerOne, setTallerOne }) => {
   const chooseSecondCharacter = () => {
     let randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
     if (tallerTwo) {
-      while (tallerTwo.height === ctx.charactersArray[randomIndexTwo].height) {
-        console.log('printed from while loop');
-
+      while (tallerTwo.height === ctx.charactersArray[randomIndexTwo].height || tallerOne.height === ctx.charactersArray[randomIndexTwo].height) {
         randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
       }
     }
@@ -31,9 +29,9 @@ const Game = ({ tallerOne, setTallerOne }) => {
   };
 
   const wrongAnswerHandler = () => {
-    console.log('game over! you scored ' + ctx.score);
-    ctx.setGameOn(false);
+    ctx.setGameOver(ctx.score + 1);
     ctx.setScore(0);
+    ctx.setGameOn(false);
   };
 
   const checkHeightHandler = (chosen, other) => {

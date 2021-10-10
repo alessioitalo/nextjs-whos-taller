@@ -6,9 +6,8 @@ const Half = ({ character, onClick }) => {
       <div className="name">{character.name}</div>
       <div className="bio">{character.bio}</div>
       <span className='credit'>Photo: {character.credit}</span>
-      <StyledOverlay>
+      <StyledOverlay isForCard={true} />
       <StyledButton onClick={onClick}>Choose</StyledButton>
-      </StyledOverlay>
 
     </StyledHalf>
   );

@@ -18,17 +18,25 @@ export const StyledNavbar = styled.nav`
 `;
 
 export const StyledMain = styled.main`
-  min-height: 80vh;
-  height: 100%;
-  background: pink;
+  height: 100vh;
+  width: 100%;
   ${flexCenter}
   flex-direction: column;
+  background-repeat: no-repeat;
+  background-image: url('/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  h1{
+    ${differentText};
+    font-size: 4rem;
+  }
+
 `;
 export const StyledGameContainer = styled.div`
-  min-height: 80vh;
   height: 100%;
   width: 100%;
-  background: lightblue;
   ${flexCenter}
   position: relative;
 
@@ -77,10 +85,10 @@ export const StyledHalf = styled.div`
       font-size: 1.6rem;
     }
 
-    .bio, .credit {
+    .bio,
+    .credit {
       font-size: 0.8rem;
     }
-
   }
 `;
 
@@ -112,7 +120,8 @@ export const StyledButton = styled.button`
   cursor: pointer;
   color: hsl(205, 46%, 37%);
   font-size: 1.5rem;
-  ${differentText}
+  ${differentText};
+  z-index: 1;
 
   &:hover {
     background-color: hsl(205, 46%, 37%);
@@ -120,6 +129,7 @@ export const StyledButton = styled.button`
     outline: 2px solid white;
   }
 `;
+
 export const StyledOverlay = styled.div`
   width: 100%;
   height: 100%;
@@ -127,7 +137,8 @@ export const StyledOverlay = styled.div`
   top: 0;
   left: 0;
   background: hsla(205, 46%, 37%, 0.5);
-  opacity: 0;
+  background: ${(props)=> props.isForCard ? 'hsla(205, 46%, 37%, 0.5)' : 'hsla(0,0%,0%, 0.5)'};
+  opacity: ${(props) => props.isForCard ? 0 : 1};
   ${flexCenter}
   flex-direction: column;
 
@@ -135,8 +146,24 @@ export const StyledOverlay = styled.div`
     opacity: 1;
   }
 
-  @media (max-width: 550px){
+  @media (max-width: 550px) {
     opacity: 1;
-    background: transparent;
+    background: ${(props) => props.isForCard ? 'transparent' : 'hsla(0,0%,0%, 0.5)'}
   }
 `;
+
+export const StyledContactForm = styled.form`
+${flexCenter};
+flex-direction: column;
+`
+export const StyledGameOver = styled.div`
+width: 60%;
+height: 50%;
+position: absolute;
+margin: auto;
+border-radius: 20px;
+${flexCenter};
+flex-direction: column;
+background: hsl(205, 46%, 37%);
+color: white;
+`

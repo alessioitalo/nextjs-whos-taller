@@ -12,7 +12,7 @@ const Navbar = () => {
           <Link href='/about'>About</Link>
         </li>
         <li>
-          <Link href='/about'>About</Link>
+          <Link href='/contact'>Contact</Link>
         </li>
       </ul>
       </StyledNavbar>
