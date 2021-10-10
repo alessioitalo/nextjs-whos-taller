@@ -19,6 +19,9 @@ export const StyledNavbar = styled.nav`
   a {
     text-decoration: none;
   }
+  @media (max-width: 750px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const StyledMain = styled.main`
@@ -31,10 +34,9 @@ export const StyledMain = styled.main`
   background-position: center;
   position: relative;
 
-  .content{
+  .content {
     width: 80%;
     padding-top: 10vh;
-
   }
 
   h1 {
@@ -110,9 +112,15 @@ export const StyledScore = styled.div`
   height: 4rem;
   position: absolute;
   border: 2px solid white;
-  background-color: hsl(205, 46%, 37%);
-  ${flexCenter}
-  ${differentText}
+  background-color: ${(props) =>
+    props.correct === 'correct'
+      ? 'green'
+      : props.correct === 'incorrect'
+      ? 'red'
+      : 'hsl(205, 46%, 37%)'};
+  ${flexCenter};
+  ${differentText};
+  transition: background-color 0.2s linear;
   @media (max-width: 750px) {
     left: 1rem;
   }

@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }) {
   const [score, setScore] = useState(0);
   const [gameOn, setGameOn] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [correct, setCorrect] = useState(false);
 
   return (
     <TallerContext.Provider
@@ -20,6 +21,8 @@ function MyApp({ Component, pageProps }) {
         setGameOn,
         gameOver,
         setGameOver,
+        correct,
+        setCorrect,
       }}
     >
       <Layout>

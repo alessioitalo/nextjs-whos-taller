@@ -16,25 +16,34 @@ const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
     let randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
     if (tallerTwo) {
       while (
-        tallerTwo.height === ctx.charactersArray[randomIndexTwo].height ||
-        tallerOne.height === ctx.charactersArray[randomIndexTwo].height
+        (tallerTwo.height || tallerOne.height) ===
+        ctx.charactersArray[randomIndexTwo].height
       ) {
         randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
       }
     }
     setTallerTwo(ctx.charactersArray[randomIndexTwo]);
+    console.log('chooseSecondCharacter fired');
   };
 
   const rightAnswerHandler = () => {
+    ctx.setCorrect('correct');
     ctx.setScore((prevScore) => prevScore + 1);
+    setTimeout(() => {
+      ctx.setCorrect(null);
+    }, 500);
     setTallerOne(tallerTwo);
     chooseSecondCharacter();
   };
 
   const wrongAnswerHandler = () => {
-    ctx.setGameOver(ctx.score + 1);
-    ctx.setScore(0);
-    ctx.setGameOn(false);
+    ctx.setCorrect('incorrect');
+    setTimeout(() => {
+      ctx.setGameOver(ctx.score + 1);
+      ctx.setScore(0);
+      ctx.setGameOn(false);
+      ctx.setCorrect(null);
+    }, 500);
   };
 
   const checkHeightHandler = (chosen, other) => {
