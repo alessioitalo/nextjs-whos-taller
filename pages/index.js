@@ -5,10 +5,10 @@ import { useState, useEffect, useContext } from 'react';
 import { MongoClient } from 'mongodb';
 import TallerContext from '../context/taller-context';
 
+const mongoUri = process.env.NEXT_PUBLIC_MONGO_URI
+
 export async function getStaticProps() {
-  const client = await MongoClient.connect(
-    `mongodb+srv://alessioitalo-taller:bkUTta0Ut6GrKBbc@cluster0.jncm5.mongodb.net/whos-taller?retryWrites=true&w=majority`
-  );
+  const client = await MongoClient.connect(mongoUri);
   const db = client.db();
   const charactersCollection = db.collection('characters');
   const characters = await charactersCollection.find().toArray();
