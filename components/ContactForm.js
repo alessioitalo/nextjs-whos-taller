@@ -1,4 +1,3 @@
-// import {} from 'react'
 import {StyledContactForm} from './styled'
 
 const ContactForm = () => {

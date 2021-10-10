@@ -1,6 +1,5 @@
 import Main from '../components/Main';
 import Game from '../components/Game';
-import { StyledMain } from '../components/styled';
 import { useState, useEffect, useContext } from 'react';
 import { MongoClient } from 'mongodb';
 import TallerContext from '../context/taller-context';
