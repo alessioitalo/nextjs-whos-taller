@@ -8,16 +8,27 @@ const About = () => {
           <h1>About</h1>
           <div>
             <p>
-              Who's taller? was created by{' '}
-              <a href='https://www.alessioitalo.uk/' target="_blank" rel="noreferrer"> a tall guy</a> who has
-              always wondered which famous people were taller than him. It is
-              built with <a href='https://nextjs.org/'>NextJS</a>, a React
+              <i>Who's taller?</i> was created by{' '}
+              <a
+                href='https://www.alessioitalo.uk/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                {' '}
+                a tall guy
+              </a>{' '}
+              who has always wondered which famous people were taller than him.
+              It is built with <a href='https://nextjs.org/'>NextJS</a>, a React
               framework.
             </p>
 
             <p>
               All the pictures being used are taken from{' '}
-              <a href='https://commons.wikimedia.org/wiki/Main_Page' target="_blank" rel="noreferrer">
+              <a
+                href='https://commons.wikimedia.org/wiki/Main_Page'
+                target='_blank'
+                rel='noreferrer'
+              >
                 {' '}
                 Wikimedia Commons
               </a>{' '}
@@ -26,9 +37,16 @@ const About = () => {
             </p>
 
             <p>
-              Who's taller? was inspired by the{' '}
-              <a href='http://www.higherlowergame.com/' target="_blank" rel="noreferrer"> Higher Lower Game</a>,
-              one of the most addictive games you'll ever play.{' '}
+              <i>Who's taller?</i> was inspired by the{' '}
+              <a
+                href='http://www.higherlowergame.com/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                {' '}
+                Higher Lower Game
+              </a>
+              , one of the most addictive games you'll ever play.{' '}
             </p>
           </div>
         </div>

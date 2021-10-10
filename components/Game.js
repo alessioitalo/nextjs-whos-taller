@@ -23,7 +23,6 @@ const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
       }
     }
     setTallerTwo(ctx.charactersArray[randomIndexTwo]);
-    console.log('chooseSecondCharacter fired');
   };
 
   const rightAnswerHandler = () => {

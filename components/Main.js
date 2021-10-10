@@ -5,7 +5,6 @@ import {
   StyledMain,
   StyledButton,
   StyledOverlay,
-  StyledGameOver,
 } from './styled';
 
 const Main = () => {
@@ -22,7 +21,7 @@ const Main = () => {
           </h5>
           {ctx.gameOver && <GameOver />}
           <StyledButton onClick={() => ctx.setGameOn(true)}>
-            Play now!
+            Play
           </StyledButton>
         </div>
       </StyledOverlay>

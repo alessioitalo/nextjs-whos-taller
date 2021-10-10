@@ -81,6 +81,7 @@ export const StyledHalf = styled.div`
 
   .credit {
     position: absolute;
+    font-size: 0.5rem;
     bottom: 1rem;
     right: 1rem;
   }
@@ -92,13 +93,17 @@ export const StyledHalf = styled.div`
     align-items: flex-end;
     text-align: right;
     padding-right: 0.5rem;
+    line-height: 1.2rem;
     .name {
       font-size: 1.6rem;
     }
 
-    .bio,
-    .credit {
+    .bio{
       font-size: 0.8rem;
+    }
+
+    .credit{
+      font-size: 0.6rem;
     }
   }
 `;
