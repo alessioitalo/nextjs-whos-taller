@@ -12,7 +12,6 @@ const differentText = css`
   font-weight: 700;
 `;
 
-
 // NAVBAR
 export const StyledNavbar = styled.nav`
   height: 10%;
@@ -25,7 +24,6 @@ export const StyledNavbar = styled.nav`
     font-size: 0.8rem;
   }
 `;
-
 
 // MAIN CONTAINER
 export const StyledMain = styled.main`
@@ -61,7 +59,6 @@ export const StyledGameContainer = styled.div`
     flex-direction: column;
   }
 `;
-
 
 // SINGLE CARD CONTAINER
 export const StyledHalf = styled.div`
@@ -107,11 +104,11 @@ export const StyledHalf = styled.div`
       font-size: 1.6rem;
     }
 
-    .bio{
+    .bio {
       font-size: 0.8rem;
     }
 
-    .credit{
+    .credit {
       font-size: 0.6rem;
     }
   }
@@ -155,12 +152,11 @@ export const StyledFooter = styled.footer`
 
   @media (max-width: 750px) {
     font-size: 0.9rem;
-    .credit{
+    .credit {
       font-size: 0.6rem;
     }
   }
 `;
-
 
 // BUTTON
 export const StyledButton = styled.button`
@@ -216,37 +212,46 @@ export const StyledContactForm = styled.form`
   flex-direction: column;
   padding: 1rem 0;
 
-  input, textarea{
+  input,
+  textarea {
     ${differentText};
     width: 80%;
     border-radius: 10px;
-    padding: 0.5rem
+    padding: 0.5rem;
   }
 
-  textarea{
+  textarea {
     min-height: 8rem;
   }
 
-  button{
+  button {
     margin-top: 1rem;
   }
 
-  .error{
+  .error {
     flex-direction: column;
     ${differentText}
     font-size: 0.8rem;
+    width: 100%;
   }
 
-  @media (max-width: 750px){
-    input, textarea{
+  .error li{
+    background: hsla(359, 100%, 50%, 0.6);
+    padding: 0.4rem;
+    border-radius: 10px;
+    margin: 0.2rem;
+  }
+
+  @media (max-width: 750px) {
+    input,
+    textarea {
       width: 100%;
     }
-    textarea{
+    textarea {
       height: 16rem;
     }
   }
 `;
-
 
 // GAME OVER MESSAGE
 export const StyledGameOver = styled.div`
@@ -268,5 +273,25 @@ export const StyledGameOver = styled.div`
     top: 10%;
     left: 5%;
     margin: auto;
+  }
+`;
+
+// FORM CONFIRMATION
+export const StyledFormConfirmation = styled.div`
+  background: hsl(205, 46%, 37%);
+  ${flexCenter};
+  flex-direction: column;
+  width: 60%;
+  height: 50%;
+  position: fixed;
+  top: 10%;
+  left: 20%;
+  z-index: 1;
+  border-radius: 20px;
+  border: 2px solid white;
+  @media (max-width: 750px){
+    width: 90%;
+    top: 20%;
+    left: 5%;
   }
 `;

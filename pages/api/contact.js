@@ -1,35 +1,35 @@
-require('dotenv').config();
-const email = process.env.NEXT_PUBLIC_EMAIL;
+const senderEmail = process.env.NEXT_PUBLIC_EMAIL_SENDER;
+const receiverEmail = process.env.NEXT_PUBLIC_EMAIL_RECEIVER;
 const pwd = process.env.NEXT_PUBLIC_PASSWORD;
+
 export default function (req, res) {
+  require('dotenv').config();
   let nodemailer = require('nodemailer');
   const transporter = nodemailer.createTransport({
     port: 465,
     host: 'smtp.gmail.com',
     auth: {
-      user: email,
+      user: senderEmail,
       pass: pwd,
     },
     secure: true,
   });
-  console.log(req)
-//   const emailData = {
-//     from: req.body.email,
-//     to: email,
-//     subject: `Message from ${req.body.name}`,
-//     text: req.body.message,
-//     html: <div>{req.body.message}</div>,
-//   };
 
-//   transporter.sendMail(emailData, (error, info) => {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log(info);
-//     }
-//   });
+  const emailData = {
+    from: senderEmail,
+    to: receiverEmail,
+    subject: `Who's taller? - message from ${req.body.name}`,
+    text: req.body.message + " | Sent from: " + req.body.email,
+    html: `<div>${req.body.message}</div><p>Sent from:
+    ${req.body.email}</p>`,
+  };
 
-//   res.status(200);
+  transporter.sendMail(emailData, function (err, info) {
+     if(err)
+      console.log(err)
+    else
+      console.log(info)
+  })
+  res.status(200);
+
 }
-
-console.log(req.body);
