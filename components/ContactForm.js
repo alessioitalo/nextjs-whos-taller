@@ -31,7 +31,6 @@ const ContactForm = () => {
         email,
         message,
       };
-      setValidForm(true)
       setSubmitted(true)
       const response = await fetch('/api/contact', {
         method: 'POST',
