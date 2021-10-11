@@ -256,7 +256,7 @@ export const StyledContactForm = styled.form`
 // GAME OVER MESSAGE
 export const StyledGameOver = styled.div`
   width: 60%;
-  height: 70%;
+  height: 100%;
   position: absolute;
   border: 2px solid white;
   top: 15%;
@@ -268,11 +268,14 @@ export const StyledGameOver = styled.div`
   background: hsl(205, 46%, 37%);
   color: white;
   @media (max-width: 750px) {
-    width: 90%;
-    height: 80%;
-    top: 10%;
-    left: 5%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     margin: auto;
+    h1{
+    font-size: 2rem;
+    }
   }
 `;
 
