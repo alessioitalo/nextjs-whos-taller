@@ -3,7 +3,7 @@ import { StyledMain, StyledOverlay } from '../components/styled';
 const About = () => {
   return (
     <StyledMain>
-      <StyledOverlay>
+      <StyledOverlay />
         <div className='content'>
           <h1>About</h1>
           <div>
@@ -50,7 +50,6 @@ const About = () => {
             </p>
           </div>
         </div>
-      </StyledOverlay>
     </StyledMain>
   );
 };

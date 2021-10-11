@@ -12,6 +12,8 @@ const differentText = css`
   font-weight: 700;
 `;
 
+
+// NAVBAR
 export const StyledNavbar = styled.nav`
   height: 10%;
   ${flexCenter}
@@ -24,8 +26,11 @@ export const StyledNavbar = styled.nav`
   }
 `;
 
+
+// MAIN CONTAINER
 export const StyledMain = styled.main`
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   width: 100%;
   ${flexCenter}
   background-repeat: no-repeat;
@@ -44,6 +49,8 @@ export const StyledMain = styled.main`
     font-size: 4rem;
   }
 `;
+
+// GAME CARDS CONTAINER
 export const StyledGameContainer = styled.div`
   height: 100%;
   width: 100%;
@@ -55,6 +62,8 @@ export const StyledGameContainer = styled.div`
   }
 `;
 
+
+// SINGLE CARD CONTAINER
 export const StyledHalf = styled.div`
   width: 50%;
   min-height: 90vh;
@@ -108,6 +117,7 @@ export const StyledHalf = styled.div`
   }
 `;
 
+// SCORE
 export const StyledScore = styled.div`
   border-radius: 50%;
   height: 4rem;
@@ -131,6 +141,7 @@ export const StyledScore = styled.div`
   }
 `;
 
+// FOOTER
 export const StyledFooter = styled.footer`
   background-color: hsl(205, 46%, 37%);
   padding: 2rem;
@@ -141,8 +152,17 @@ export const StyledFooter = styled.footer`
   .credit {
     font-size: 0.8rem;
   }
+
+  @media (max-width: 750px) {
+    font-size: 0.9rem;
+    .credit{
+      font-size: 0.6rem;
+    }
+  }
 `;
 
+
+// BUTTON
 export const StyledButton = styled.button`
   border-radius: 10px;
   border: none;
@@ -165,13 +185,13 @@ export const StyledButton = styled.button`
   }
 `;
 
+// OVERLAY
 export const StyledOverlay = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background: hsla(205, 46%, 37%, 0.5);
   background: ${(props) =>
     props.isForCard ? 'hsla(205, 46%, 37%, 0.5)' : 'hsla(0,0%,0%, 0.5)'};
   opacity: ${(props) => (props.isForCard ? 0 : 1)};
@@ -190,11 +210,45 @@ export const StyledOverlay = styled.div`
   }
 `;
 
+// CONTACT FORM
 export const StyledContactForm = styled.form`
   ${flexCenter};
   flex-direction: column;
+  padding: 1rem 0;
+
+  input, textarea{
+    ${differentText};
+    width: 80%;
+    border-radius: 10px;
+    padding: 0.5rem
+  }
+
+  textarea{
+    min-height: 8rem;
+  }
+
+  button{
+    margin-top: 1rem;
+  }
+
+  .error{
+    flex-direction: column;
+    ${differentText}
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 750px){
+    input, textarea{
+      width: 100%;
+    }
+    textarea{
+      height: 16rem;
+    }
+  }
 `;
 
+
+// GAME OVER MESSAGE
 export const StyledGameOver = styled.div`
   width: 60%;
   height: 70%;

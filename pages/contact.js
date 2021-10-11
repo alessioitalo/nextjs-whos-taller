@@ -3,19 +3,12 @@ import ContactForm from '../components/ContactForm';
 const Contact = () => {
   return (
     <StyledMain>
-      <StyledOverlay>
+      <StyledOverlay />
         <div className='content'>
           <h1>Contact</h1>
-          <div>
-            Gotta learn{' '}
-            <a href='https://medium.com/nerd-for-tech/coding-a-contact-form-with-next-js-and-nodemailer-d3a8dc6cd645'>
-              this
-            </a>{' '}
-            first...
-          </div>
+          <div>Feedbacks? Questions? Unless you want to sue me, you can drop me a message using this contact form.</div>
           <ContactForm />
         </div>
-      </StyledOverlay>
     </StyledMain>
   );
 };

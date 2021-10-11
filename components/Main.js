@@ -12,7 +12,7 @@ const Main = () => {
 
   return (
     <StyledMain>
-      <StyledOverlay>
+      <StyledOverlay />
         <div className='content'>
           <h1>Who's taller?</h1>
           <h5>
@@ -24,7 +24,6 @@ const Main = () => {
             Play
           </StyledButton>
         </div>
-      </StyledOverlay>
     </StyledMain>
   );
 };
