@@ -31,7 +31,7 @@ const Leaderboard = () => {
       })}
       </ul>
     </div>
-    // </StyledMain>
+    </StyledMain>
   );
 };
 
