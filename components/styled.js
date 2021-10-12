@@ -321,15 +321,42 @@ export const StyledScoreboard = styled.div`
   }
 
   li:nth-of-type(1) {
-    background:linear-gradient(to right, #B38728, #BF953F, #FCF6BA);
+    background: linear-gradient(to right, #b38728, #bf953f, #fcf6ba);
     border-radius: 10px;
   }
   li:nth-of-type(2) {
-    background:linear-gradient(to right, #f5f7fa, #b8c6db, #f5f7fa);
+    background: linear-gradient(to right, #f5f7fa, #b8c6db, #f5f7fa);
     border-radius: 10px;
   }
   li:nth-of-type(3) {
-    background:linear-gradient(to right, #c19e67, #BE7023, #c19e67);
+    background: linear-gradient(to right, #c19e67, #be7023, #c19e67);
     border-radius: 10px;
+  }
+`;
+
+// HIGHSCORE FORM
+export const StyledHighscoreForm = styled.div`
+  ${flexCenter};
+  flex-direction: column;
+  padding: 1rem 0;
+
+  input{
+    ${differentText};
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 80%;
+    margin: 0.5rem 0;
+  }
+
+  div{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  button{
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 4rem;
   }
 `;

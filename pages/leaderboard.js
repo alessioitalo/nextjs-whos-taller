@@ -1,35 +1,26 @@
-import { MongoClient } from 'mongodb';
-import React from 'react';
+// import { MongoClient } from 'mongodb';
+import { useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import {
   StyledMain,
   StyledOverlay,
   StyledScoreboard,
 } from '../components/styled';
+import TallerContext from '../context/taller-context';
 
-const mongoUri = process.env.NEXT_PUBLIC_MONGO_URI;
+// const mongoUri = process.env.NEXT_PUBLIC_MONGO_URI;
 
-export async function getServerSideProps(context) {
-  const client = await MongoClient.connect(mongoUri);
-  const db = client.db();
-  const leadersCollection = db.collection('leaderboard');
-  const leaders = await leadersCollection.find().toArray();
-  client.close();
+const Leaderboard = () => {
+  const ctx = useContext(TallerContext);
+  const router = useRouter();
 
-  return {
-    props: {
-      leaders: leaders.map((leader) => {
-        return {
-          id: leader._id.toString(),
-          name: leader.name,
-          score: leader.score,
-        };
-      }),
-    },
-  };
-}
-
-
-const Leaderboard = ({ leaders }) => {
+  useEffect(() => {
+    if (ctx.topTen.length === 0) {
+      router.replace('/');
+    }
+    // preventing leaderboard page to be shown as empty
+    // as staticProps are being loaded in the context in the main page
+  }, []);
 
   return (
     <StyledMain>
@@ -39,13 +30,11 @@ const Leaderboard = ({ leaders }) => {
         <p>Can you make it to the top?</p>
         <StyledScoreboard>
           <ul>
-            {leaders.sort((a, b) => b.score - a.score).map((leader) => {
-              return (
-                <li key={leader.id}>
-                  {leader.name} | {leader.score}
-                </li>
-              );
-            })}
+            {ctx.topTen.map((leader) => (
+              <li key={leader.id}>
+                {leader.name} | {leader.score}
+              </li>
+            ))}
           </ul>
         </StyledScoreboard>
       </div>
