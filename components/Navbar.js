@@ -14,6 +14,9 @@ const Navbar = () => {
         <li>
           <Link href='/contact'>Contact</Link>
         </li>
+        <li>
+        <Link href='/leaderboard'>Top Scores</Link>
+        </li>
       </ul>
       </StyledNavbar>
   );
