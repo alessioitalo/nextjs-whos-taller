@@ -1,3 +1,4 @@
+import { MongoClient } from 'mongodb';
 import React from 'react';
 import {
   StyledMain,
@@ -5,32 +6,43 @@ import {
   StyledScoreboard,
 } from '../components/styled';
 
-const DUMMY_DATA = [
-  { name: 'John Doe', score: 32 },
-  { name: 'Jane Doe', score: 4 },
-  { name: 'John Doe', score: 6 },
-  { name: 'Jane Doe', score: 3 },
-  { name: 'John Doe', score: 52 },
-  { name: 'Jane Doe', score: 19 },
-  { name: 'John Doe', score: 14 },
-  { name: 'Jane Doe', score: 14 },
-  { name: 'John Doe', score: 12 },
-  { name: 'Jane Doe', score: 40 },
-];
+const mongoUri = process.env.NEXT_PUBLIC_MONGO_URI;
 
-const Leaderboard = () => {
+export async function getServerSideProps(context) {
+  const client = await MongoClient.connect(mongoUri);
+  const db = client.db();
+  const leadersCollection = db.collection('leaderboard');
+  const leaders = await leadersCollection.find().toArray();
+  client.close();
+
+  return {
+    props: {
+      leaders: leaders.map((leader) => {
+        return {
+          id: leader._id.toString(),
+          name: leader.name,
+          score: leader.score,
+        };
+      }),
+    },
+  };
+}
+
+
+const Leaderboard = ({ leaders }) => {
+
   return (
     <StyledMain>
       <StyledOverlay />
       <div className='content'>
-          <h1>Leaderboard</h1>
+        <h1>Leaderboard</h1>
         <p>Can you make it to the top?</p>
         <StyledScoreboard>
           <ul>
-            {DUMMY_DATA.sort((a, b) => b.score - a.score).map((dummy) => {
+            {leaders.sort((a, b) => b.score - a.score).map((leader) => {
               return (
-                <li key={DUMMY_DATA.indexOf(dummy)}>
-                  {dummy.name} | {dummy.score}
+                <li key={leader.id}>
+                  {leader.name} | {leader.score}
                 </li>
               );
             })}
