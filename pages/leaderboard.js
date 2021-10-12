@@ -1,5 +1,9 @@
 import React from 'react';
-import { StyledMain, StyledOverlay } from '../components/styled';
+import {
+  StyledMain,
+  StyledOverlay,
+  StyledScoreboard,
+} from '../components/styled';
 
 const DUMMY_DATA = [
   { name: 'John Doe', score: 32 },
@@ -14,23 +18,25 @@ const DUMMY_DATA = [
   { name: 'Jane Doe', score: 40 },
 ];
 
-
 const Leaderboard = () => {
   return (
     <StyledMain>
       <StyledOverlay />
-    <div className='content'>
-      <h1>Leaderboard</h1>
-      <ul style={{flexDirection: 'column'}}>
-      {DUMMY_DATA.sort((a,b)=>b.score - a.score).map((dummy) => {
-        return (
-          <li key={DUMMY_DATA.indexOf(dummy)}>
-            {dummy.name} | {dummy.score}
-          </li>
-        );
-      })}
-      </ul>
-    </div>
+      <div className='content'>
+          <h1>Leaderboard</h1>
+        <p>Can you make it to the top?</p>
+        <StyledScoreboard>
+          <ul>
+            {DUMMY_DATA.sort((a, b) => b.score - a.score).map((dummy) => {
+              return (
+                <li key={DUMMY_DATA.indexOf(dummy)}>
+                  {dummy.name} | {dummy.score}
+                </li>
+              );
+            })}
+          </ul>
+        </StyledScoreboard>
+      </div>
     </StyledMain>
   );
 };
