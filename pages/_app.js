@@ -9,6 +9,8 @@ function MyApp({ Component, pageProps }) {
   const [gameOn, setGameOn] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [correct, setCorrect] = useState(false);
+  const [topTen, setTopTen] = useState([]);
+  const [highScore, setHighScore] = useState(false);
 
   return (
     <TallerContext.Provider
@@ -23,6 +25,11 @@ function MyApp({ Component, pageProps }) {
         setGameOver,
         correct,
         setCorrect,
+        topTen,
+        setTopTen,
+        highScore,
+        setHighScore,
+        // addNewHighscore,
       }}
     >
       <Layout>

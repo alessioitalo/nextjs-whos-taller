@@ -11,6 +11,8 @@ export async function getServerSideProps() {
   const db = client.db();
   const charactersCollection = db.collection('characters');
   const characters = await charactersCollection.find().toArray();
+  const leadersCollection = db.collection('leaderboard');
+  const leaders = await leadersCollection.find().toArray();
   client.close();
   return {
     props: {
@@ -22,17 +24,25 @@ export async function getServerSideProps() {
         credit: char.credit,
         height: char.height,
       })),
+      leaders: leaders.map((leader) => ({
+        id: leader._id.toString(),
+        name: leader.name,
+        score: leader.score,
+      })),
+      revalidate: 200,
     },
   };
 }
 
-export default function Home({ characters }) {
+
+export default function Home({ characters, leaders }) {
   const ctx = useContext(TallerContext);
   const [tallerOne, setTallerOne] = useState(null);
 
   useEffect(() => {
     ctx.setCharactersArray(characters);
-  }, []);
+    ctx.setTopTen(leaders.sort((a, b) => b.score - a.score).slice(0, 10));
+}, []);
 
   let randomIndexOne = Math.floor(Math.random() * ctx.charactersArray.length);
 

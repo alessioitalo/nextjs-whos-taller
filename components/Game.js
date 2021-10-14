@@ -4,7 +4,7 @@ import { StyledGameContainer } from './styled';
 import TallerContext from '../context/taller-context';
 import { useContext, useState, useEffect } from 'react';
 
-const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
+const Game = ({ tallerOne, setTallerOne }) => {
   const ctx = useContext(TallerContext);
   const [tallerTwo, setTallerTwo] = useState(null);
 
@@ -14,14 +14,11 @@ const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
 
   const chooseSecondCharacter = () => {
     let randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
-    if (tallerTwo) {
-      while (
-        (tallerTwo.height || tallerOne.height) ===
-        ctx.charactersArray[randomIndexTwo].height
-      ) {
-        randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
-      }
+    // if (tallerOne) {
+    while (tallerOne.height === ctx.charactersArray[randomIndexTwo].height) {
+      randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
     }
+    // }
     setTallerTwo(ctx.charactersArray[randomIndexTwo]);
   };
 
@@ -39,7 +36,14 @@ const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
     ctx.setCorrect('incorrect');
     setTimeout(() => {
       ctx.setGameOver(ctx.score + 1);
-      ctx.setScore(0);
+      let index = ctx.topTen.indexOf(
+        ctx.topTen.find((leader) => leader.score < ctx.score)
+      );
+      if (index) {
+        ctx.setHighScore(ctx.score);
+      } else {
+        ctx.setScore(0);
+      }
       ctx.setGameOn(false);
       ctx.setCorrect(null);
     }, 500);

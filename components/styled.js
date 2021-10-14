@@ -46,6 +46,12 @@ export const StyledMain = styled.main`
     ${differentText};
     font-size: 4rem;
   }
+
+  @media (max-width: 750px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
 `;
 
 // GAME CARDS CONTAINER
@@ -235,7 +241,7 @@ export const StyledContactForm = styled.form`
     width: 100%;
   }
 
-  .error li{
+  .error li {
     background: hsla(359, 100%, 50%, 0.6);
     padding: 0.4rem;
     border-radius: 10px;
@@ -255,7 +261,7 @@ export const StyledContactForm = styled.form`
 
 // GAME OVER MESSAGE
 export const StyledGameOver = styled.div`
-  width: 60%;
+  width: 70%;
   height: 100%;
   position: absolute;
   border: 2px solid white;
@@ -267,14 +273,17 @@ export const StyledGameOver = styled.div`
   flex-direction: column;
   background: hsl(205, 46%, 37%);
   color: white;
+  h1{
+    font-size: 3rem;
+  }
   @media (max-width: 750px) {
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     margin: auto;
-    h1{
-    font-size: 2rem;
+    h1 {
+      font-size: 2rem;
     }
   }
 `;
@@ -292,9 +301,65 @@ export const StyledFormConfirmation = styled.div`
   z-index: 1;
   border-radius: 20px;
   border: 2px solid white;
-  @media (max-width: 750px){
+  @media (max-width: 750px) {
     width: 90%;
     top: 20%;
     left: 5%;
+  }
+`;
+
+// SCOREBOARD
+export const StyledScoreboard = styled.div`
+  ${differentText};
+  ${flexCenter};
+
+  ul {
+    flex-direction: column;
+  }
+
+  li {
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    width: 100%;
+  }
+
+  li:nth-of-type(1) {
+    background: linear-gradient(to right, #b38728, #bf953f, #fcf6ba);
+    border-radius: 10px;
+  }
+  li:nth-of-type(2) {
+    background: linear-gradient(to right, #f5f7fa, #b8c6db, #f5f7fa);
+    border-radius: 10px;
+  }
+  li:nth-of-type(3) {
+    background: linear-gradient(to right, #c19e67, #be7023, #c19e67);
+    border-radius: 10px;
+  }
+`;
+
+// HIGHSCORE FORM
+export const StyledHighscoreForm = styled.div`
+  ${flexCenter};
+  flex-direction: column;
+  padding: 1rem 0;
+
+  input{
+    ${differentText};
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 80%;
+    margin: 0.5rem 0;
+  }
+
+  div{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  button{
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 4rem;
   }
 `;
