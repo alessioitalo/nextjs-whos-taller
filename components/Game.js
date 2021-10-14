@@ -4,7 +4,7 @@ import { StyledGameContainer } from './styled';
 import TallerContext from '../context/taller-context';
 import { useContext, useState, useEffect } from 'react';
 
-const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
+const Game = ({ tallerOne, setTallerOne }) => {
   const ctx = useContext(TallerContext);
   const [tallerTwo, setTallerTwo] = useState(null);
 
@@ -36,15 +36,14 @@ const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
     ctx.setCorrect('incorrect');
     setTimeout(() => {
       ctx.setGameOver(ctx.score + 1);
-      let index = ctx.topTen.indexOf(ctx.topTen.find(leader=>leader.score < ctx.score))
+      let index = ctx.topTen.indexOf(
+        ctx.topTen.find((leader) => leader.score < ctx.score)
+      );
       if (index) {
-        // THIS WORKS.
-        // it returns the index in the leaders array in context where the the score is lower
-        // need to launch a post request here.
-        // can try with a dummy test, pushing the name in the position?
         ctx.setHighScore(ctx.score);
+      } else {
+        ctx.setScore(0);
       }
-      // ctx.setScore(0);
       ctx.setGameOn(false);
       ctx.setCorrect(null);
     }, 500);

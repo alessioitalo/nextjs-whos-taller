@@ -20,7 +20,10 @@ const HighscoreForm = () => {
     });
     const data = await response.json();
     ctx.setScore(0);
-    router.replace('/');
+    ctx.setHighScore(false)
+    ctx.setGameOver(false)
+    router.reload(window.location.pathname)
+
   };
 
   return (
