@@ -26,6 +26,11 @@ const HighscoreForm = () => {
 
   };
 
+  const skipHighscore = ()=>{
+    ctx.setGameOver(false)
+    ctx.setScore(0)
+  }
+
   return (
     <StyledHighscoreForm>
       <label>You made the leaderboard! Enter your name: </label>
@@ -41,7 +46,7 @@ const HighscoreForm = () => {
         >
           Submit
         </StyledButton>
-        <StyledButton onClick={() => ctx.setGameOver(false)}>Skip</StyledButton>
+        <StyledButton onClick={skipHighscore}>Skip</StyledButton>
       </div>
     </StyledHighscoreForm>
   );

@@ -14,11 +14,11 @@ const Game = ({ tallerOne, setTallerOne }) => {
 
   const chooseSecondCharacter = () => {
     let randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
-    if (tallerOne) {
-      while (tallerOne.height === ctx.charactersArray[randomIndexTwo].height) {
-        randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
-      }
+    // if (tallerOne) {
+    while (tallerOne.height === ctx.charactersArray[randomIndexTwo].height) {
+      randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
     }
+    // }
     setTallerTwo(ctx.charactersArray[randomIndexTwo]);
   };
 
