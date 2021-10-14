@@ -4,9 +4,9 @@ import { useState, useEffect, useContext } from 'react';
 import { MongoClient } from 'mongodb';
 import TallerContext from '../context/taller-context';
 
-const mongoUri = process.env.NEXT_PUBLIC_MONGO_URI
+const mongoUri = process.env.NEXT_PUBLIC_MONGO_URI;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const client = await MongoClient.connect(mongoUri);
   const db = client.db();
   const charactersCollection = db.collection('characters');
