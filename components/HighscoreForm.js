@@ -19,7 +19,7 @@ const HighscoreForm = () => {
       },
     });
     const data = await response.json();
-    console.log(data);
+    ctx.setScore(0);
     router.replace('/');
   };
 

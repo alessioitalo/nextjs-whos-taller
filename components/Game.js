@@ -42,11 +42,9 @@ const Game = ({ tallerOne, setTallerOne, setGameOver }) => {
         // it returns the index in the leaders array in context where the the score is lower
         // need to launch a post request here.
         // can try with a dummy test, pushing the name in the position?
-        console.log('higher than someone in leaderboard');
-        console.log(index);
         ctx.setHighScore(ctx.score);
       }
-      ctx.setScore(0);
+      // ctx.setScore(0);
       ctx.setGameOn(false);
       ctx.setCorrect(null);
     }, 500);
