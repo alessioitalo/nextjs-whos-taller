@@ -41,6 +41,7 @@ const Game = ({ tallerOne, setTallerOne }) => {
         ctx.setHighScore(ctx.score);
       } else {
         ctx.setScore(0);
+        ctx.setHighScore(false);
       }
       ctx.setGameOn(false);
       ctx.setCorrect(null);
