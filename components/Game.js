@@ -36,10 +36,8 @@ const Game = ({ tallerOne, setTallerOne }) => {
     ctx.setCorrect('incorrect');
     setTimeout(() => {
       ctx.setGameOver(ctx.score + 1);
-      let index = ctx.topTen.indexOf(
-        ctx.topTen.find((leader) => leader.score < ctx.score)
-      );
-      if (index) {
+      const index = ctx.topTen.at(-1);
+      if (ctx.score > index.score) {
         ctx.setHighScore(ctx.score);
       } else {
         ctx.setScore(0);
