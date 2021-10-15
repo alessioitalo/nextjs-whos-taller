@@ -34,7 +34,6 @@ export async function getServerSideProps() {
   };
 }
 
-
 export default function Home({ characters, leaders }) {
   const ctx = useContext(TallerContext);
   const [tallerOne, setTallerOne] = useState(null);
@@ -42,12 +41,13 @@ export default function Home({ characters, leaders }) {
   useEffect(() => {
     ctx.setCharactersArray(characters);
     ctx.setTopTen(leaders.sort((a, b) => b.score - a.score).slice(0, 10));
-}, []);
+  }, []);
 
   let randomIndexOne = Math.floor(Math.random() * ctx.charactersArray.length);
 
   return (
     <>
+
       {ctx.gameOn ? (
         <Game
           tallerOne={tallerOne || ctx.charactersArray[randomIndexOne]}

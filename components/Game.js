@@ -9,16 +9,14 @@ const Game = ({ tallerOne, setTallerOne }) => {
   const [tallerTwo, setTallerTwo] = useState(null);
 
   useEffect(() => {
-    chooseSecondCharacter();
+    chooseSecondCharacter(tallerOne);
   }, []);
 
-  const chooseSecondCharacter = () => {
+  const chooseSecondCharacter = (character) => {
     let randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
-    // if (tallerOne) {
-    while (tallerOne.height === ctx.charactersArray[randomIndexTwo].height) {
-      randomIndexTwo = Math.floor(Math.random() * ctx.charactersArray.length);
+    while (character.height === ctx.charactersArray[randomIndexTwo].height) {
+      randomIndexTwo = Math.floor(Math.random() * 4);
     }
-    // }
     setTallerTwo(ctx.charactersArray[randomIndexTwo]);
   };
 
@@ -29,7 +27,7 @@ const Game = ({ tallerOne, setTallerOne }) => {
       ctx.setCorrect(null);
     }, 500);
     setTallerOne(tallerTwo);
-    chooseSecondCharacter();
+    chooseSecondCharacter(tallerTwo);
   };
 
   const wrongAnswerHandler = () => {
@@ -49,7 +47,7 @@ const Game = ({ tallerOne, setTallerOne }) => {
   };
 
   const checkHeightHandler = (chosen, other) => {
-    if (chosen.height >= other.height) {
+    if (chosen.height > other.height) {
       rightAnswerHandler();
       return;
     }
@@ -58,6 +56,7 @@ const Game = ({ tallerOne, setTallerOne }) => {
 
   return (
     <StyledGameContainer>
+
       <Half
         first={true}
         character={tallerOne}
